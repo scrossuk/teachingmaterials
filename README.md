@@ -21,4 +21,4 @@ $ make
 
 `dynamic_array` is essentially a simplified version of `std::vector<>`.
 
-See the [dynamic_array README](CAndCPlusPlus/README.md).
+See the [dynamic_array README](CAndCPlusPlus/DynamicArray/README.md).
