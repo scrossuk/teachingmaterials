@@ -8,7 +8,7 @@
 /**
  * \brief Dynamically resizable array.
  *
- * This is essentially a very simply version of std::vector<> (and uses the same
+ * This is essentially a very simple version of std::vector<> (and uses the same
  * underscore-separated style as the standard library).
  *
  * There are various comments starting 'FIXME:'; these point to issues with the
