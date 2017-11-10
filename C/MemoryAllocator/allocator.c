@@ -1,6 +1,8 @@
 #include "assert.h"
 #include "memory.h"
 #include "stdbool.h"
+#include "stdint.h"
+#include "stdio.h"
 #include "stdlib.h"
 
 // Size of a block, as used by mem_block_alloc().
