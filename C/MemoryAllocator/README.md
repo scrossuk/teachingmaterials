@@ -1,6 +1,6 @@
 # Memory Allocator
 
-As part of the development of a new operating system, you've been asked to build a temporary memory allocator.
+As part of the development of a new operating system, you've been asked to build a memory allocator.
 
 ## What you need to implement
 
@@ -40,6 +40,7 @@ Note the following:
 * Your code must compile!
 * Write some test cases to show that your code works. These should be included with your answer.
 * Add asserts as necessary to show invariants, pre-conditions, etc.
+* Your implementation should only use `mem_block_alloc()` and `mem_block_free()` (i.e. **not** `malloc()`, `free()`, etc., except for testing).
 * Your allocator must use memory efficiently, using a minimal amount of space per allocation - don't allocate entire blocks for small allocations.
 * Memory released by `mem_free()` should be reusable by subsequent calls to `mem_alloc()` - we don't have infinite memory!
 * You may use global variables to store state needed by the memory allocator.
