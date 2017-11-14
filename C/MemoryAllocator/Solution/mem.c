@@ -7,6 +7,10 @@
 
 static struct block* first_block;
 
+static size_t div_round_up(size_t a, size_t b) {
+    return (a + (b - 1)) / b;
+}
+
 void* mem_alloc(size_t n) {
     if (n == 0) { return NULL; }
     
@@ -14,17 +18,14 @@ void* mem_alloc(size_t n) {
     n = (n + 7) & ~7;
     
     // Try to find space in existing blocks.
-    struct block *current_block = first_block;
-    while (current_block != NULL) {
-        struct blockmem *mem = block_find_mem(current_block, n);
+    for (struct block *b = first_block; b != NULL; b = b->next) {
+        struct blockmem *mem = block_find_mem(b, n);
         if (mem != NULL) { return blockmem_get_data_ptr(mem); }
-        
-        current_block = current_block->next;
     }
     
     // No space available, so allocate a new block.
     const size_t block_min_alloc_size = block_alloc_size_for_data_size(n);
-    const size_t mem_block_count = (block_min_alloc_size + (MEM_BLOCK_SIZE - 1)) / MEM_BLOCK_SIZE;
+    const size_t mem_block_count = div_round_up(block_min_alloc_size, MEM_BLOCK_SIZE);
     void *block_mem = mem_block_alloc(mem_block_count);
     if (block_mem == NULL) { return NULL; }
     

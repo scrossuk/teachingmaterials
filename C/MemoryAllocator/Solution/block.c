@@ -10,8 +10,6 @@ size_t block_alloc_size_for_data_size(const size_t data_size) {
     return sizeof(struct block) + blockmem_alloc_size_for_data_size(data_size);
 }
 
-struct blockmem *block_get_first_mem(struct block *block);
-
 struct block *block_init(uint8_t *block_mem, const size_t alloc_size) {
     struct block *block = (struct block *)(block_mem + alloc_size) - 1;
     block->prev = NULL;
